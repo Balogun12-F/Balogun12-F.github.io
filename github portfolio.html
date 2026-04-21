@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favour Oluwadamilola Balogun Marketing Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1117;
+    --paper: #f7f5f0;
+    --cream: #ede9e1;
+    --accent: #c8622a;
+    --accent-light: #e8845a;
+    --muted: #6b6560;
+    --rule: #d4cfc7;
+    --card: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(200,98,42,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-text {}
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 12px 28px;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+  }
+
+  .btn-outline:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .hero-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .photo-frame {
+    width: 320px;
+    height: 380px;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent);
+    z-index: -1;
+  }
+
+  .photo-placeholder {
+    text-align: center;
+    color: var(--muted);
+  }
+
+  .photo-placeholder .initials {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .photo-placeholder p {
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 100px 5%;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .section-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--cream);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .about-text p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+  }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 3rem;
+  }
+
+  .skill-item {
+    background: var(--paper);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: background 0.2s;
+  }
+
+  .skill-item:hover {
+    background: var(--cream);
+  }
+
+  .skill-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .skill-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── PROJECTS ── */
+  .projects { background: var(--paper); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+
+  .project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tool-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(200,98,42,0.08);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .project-domain {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .project-insights {
+    list-style: none;
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    margin-top: 1rem;
+  }
+
+  .project-insights li {
+    font-size: 0.875rem;
+    color: var(--muted);
+    padding: 0.4rem 0;
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .project-insights li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .contact .section-title { color: var(--paper); }
+  .contact .section-label { color: var(--accent-light); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .contact-text p {
+    color: rgba(247,245,240,0.65);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--paper);
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(247,245,240,0.15);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    background: rgba(200,98,42,0.1);
+  }
+
+  .contact-link-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(247,245,240,0.45);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .contact-link-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(247,245,240,0.1);
+    padding: 1.5rem 5%;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    color: rgba(247,245,240,0.35);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-text > * {
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-tag { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero-desc { animation-delay: 0.3s; }
+  .hero-cta { animation-delay: 0.4s; }
+  .hero-photo { animation: fadeUp 0.8s 0.3s ease forwards; opacity: 0; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo { display: none; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Favour Balogun</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-tag">Marketing Analytics</span>
+      <h1>Turning data into decisions that <em>actually matter</em></h1>
+      <p class="hero-desc">I am Favour Oluwadamilola Balogun ,a marketing analyst based in Lagos, Nigeria. I work with businesses to find what is working, what is leaking money, and what opportunities the numbers are hiding.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <img src="favour.jpeg" alt="Favour Oluwadamilola Balogun" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Engineer by training.<br>Analyst by choice.</h2>
+    <div class="section-rule"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I hold a <strong>B.Sc. in Electrical & Electronics Engineering</strong> from the University of Lagos : Second Class Upper. My engineering background gave me something most analysts do not have: the ability to think in systems, ask the right questions, and follow problems all the way to their root cause.</p>
+        <p>I transitioned into marketing analytics because data tells the same kind of story that engineering does ,something is working, something is broken, and figuring out which is which is the job.</p>
+        <p>Every project I deliver comes with plain language interpretation. Not just charts, but <strong>answers that drive real decisions</strong>. I do not stop at "what happened" , I go to "why it happened" and "what to do about it."</p>
+        <p>Available for remote freelance engagements globally and open to relocation.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-number">7+</span>
+          <span class="stat-label">Analytics Projects Completed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Tools & Platforms</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">27M+</span>
+          <span class="stat-label">Data Points Analysed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3.85</span>
+          <span class="stat-label">GPA — University of Lagos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-rule"></div>
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">Pandas</span>
+          <span class="tool-tag">Matplotlib</span>
+        </div>
+        <h3 class="project-title">Customer Churn Analysis: SaaS Business</h3>
+        <p class="project-domain">Customer Analytics · Retention · Revenue</p>
+        <ul class="project-insights">
+          <li>Analysed 500 customer records to identify the root cause of churn across subscription plans and regions</li>
+          <li>Found that Basic plan leads on volume but Enterprise generates the highest revenue per customer, two different stories in one dataset</li>
+          <li>Discovered Enterprise customers churn the most despite spending the most, a value delivery problem, not a pricing problem</li>
+          <li>Ghana recorded the highest churn rate at 39.5% ,flagging a regional retention gap requiring investigation</li>
+        </ul>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-tools">
+          <span class="tool-tag">GA4</span>
+          <span class="tool-tag">Looker Studio</span>
+        </div>
+        <h3 class="project-title">Google Merchandise Store: GA4 Marketing Performance</h3>
+        <p class="project-domain">Marketing Analytics · Web Traffic · Funnel Analysis</p>
+        <ul class="project-insights">
+          <li>Built a four-page live marketing dashboard connected directly to GA4</li>
+          <li>Identified a 90% drop-off between site visit and add-to-cart,and an 89% drop between add-to-cart and purchase</li>
+          <li>Revealed Email converts 4x better than any other channel despite the lowest traffic volume</li>
+          <li>Dashboard updates live,no manual refresh required</li>
+        </ul>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="project-tools">
+          <span class="tool-tag">Looker Studio</span>
+          <span class="tool-tag">Google Sheets</span>
+        </div>
+        <h3 class="project-title">Flowdesk SaaS: Marketing & Revenue Dashboard</h3>
+        <p class="project-domain">SaaS Analytics · Acquisition · Retention · Cohort Analysis</p>
+        <ul class="project-insights">
+          <li>Built a five-page dashboard across three blended data sources</li>
+          <li>Found Google Ads,highest spend channel, delivered the lowest return per dollar</li>
+          <li>Referral generated a 25x LTV:CAC ratio at a fraction of the cost</li>
+          <li>Payback period declined from 8.4 months to 5.8 months across the year ,confirming improving efficiency</li>
+        </ul>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card">
+        <div class="project-tools">
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">DAX</span>
+        </div>
+        <h3 class="project-title">Marketing Campaign Performance Analysis</h3>
+        <p class="project-domain">Marketing Analytics · ROI · Channel Performance</p>
+        <ul class="project-insights">
+          <li>Built custom DAX measures for ROMI, CPA, and channel efficiency ratios</li>
+          <li>Identified YouTube as highest-performing channel with a 2.8x ROMI</li>
+          <li>Facebook and Instagram showed negative ROMI,making the case for budget reallocation</li>
+          <li>Uncovered weekday-concentrated activity revealing campaign scheduling was misaligned with buying behaviour</li>
+        </ul>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card">
+        <div class="project-tools">
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">DAX</span>
+        </div>
+        <h3 class="project-title">Amazon E-Commerce Sales & Review Intelligence</h3>
+        <p class="project-domain">E-Commerce Analytics · Product Intelligence · 27M+ Reviews</p>
+        <ul class="project-insights">
+          <li>Integrated 27 million reviews and 1,465 products into a unified Power BI model</li>
+          <li>Discounts between 10–30% maximised review volume ,discounts above 40% showed diminishing returns</li>
+          <li>Flagged high-traffic categories with below-average ratings as churn risk zones</li>
+        </ul>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card">
+        <div class="project-tools">
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">DAX</span>
+        </div>
+        <h3 class="project-title">TATA Retail Sales Analysis</h3>
+        <p class="project-domain">Retail Analytics · $9.75M Revenue · 38 Countries</p>
+        <ul class="project-insights">
+          <li>Revealed the UK as the dominant market while 37 other countries remained significantly underperforming</li>
+          <li>Identified November as a consistent sales peak the business was not capitalising on</li>
+          <li>Exposed a pricing alignment gap, high-volume and high-revenue products were not the same</li>
+        </ul>
+      </div>
+
+      <!-- Project 7 -->
+      <div class="project-card">
+        <div class="project-tools">
+          <span class="tool-tag">Excel</span>
+          <span class="tool-tag">Pivot Tables</span>
+        </div>
+        <h3 class="project-title">Supply Chain Operations & Defect Analysis</h3>
+        <p class="project-domain">Operations Analytics · Supply Chain · Cost Efficiency</p>
+        <ul class="project-insights">
+          <li>Conducted SKU-level analysis across stock, shipment, and defect data</li>
+          <li>Road transport defect rates were 2.1x higher than rail — a significant hidden cost</li>
+          <li>Over 30% of SKUs were either overstocked or critically understocked</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background: var(--cream); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+  <div class="section-inner">
+    <p class="section-label">Toolkit</p>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="section-rule"></div>
+    <div class="skills-grid">
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Google Analytics 4 (GA4)</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Looker Studio</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Power BI</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Microsoft Excel</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Advanced SQL</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">PostgreSQL</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Python (Pandas)</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Matplotlib</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">DAX</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Google Sheets</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Power Query / ETL</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Data Modelling</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">KPI Dashboards</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Funnel Analysis</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Cohort Analysis</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Customer Segmentation</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-text">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Let's work together</h2>
+        <div class="section-rule"></div>
+        <p>I am available for remote freelance engagements and open to international opportunities. If you have data that needs to make sense, get in touch.</p>
+        <p>Based in Lagos, Nigeria. Available immediately.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:favourdammy1999@gmail.com" class="contact-link">
+          <div>
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">favourdammy1999@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/favour-buraimoh-analytics" target="_blank" class="contact-link">
+          <div>
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">favour-buraimoh-analytics</span>
+          </div>
+        </a>
+        <a href="https://github.com/Balogun12-F" target="_blank" class="contact-link">
+          <div>
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-value">Balogun12-F</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Favour Oluwadamilola Balogun · Marketing Analytics · Lagos, Nigeria</p>
+</footer>
+
+</body>
+</html>
